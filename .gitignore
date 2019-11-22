@@ -8,3 +8,10 @@
 *.latexmk
 *.log
 *.gz
+.Rproj.user
+package-lock.json
+_publish.R
+_book
+_bookdown_files
+rsconnect
+

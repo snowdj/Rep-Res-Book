@@ -1,0 +1,26 @@
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+```{r include=FALSE}
+# Additional packages to cite
+pkg_additional <- c(
+    .packages(),
+    "animation", "bookdown", "countrycode", "data.table", "dplyr", "formatR",
+    "ggplot2", "here", "htmlwidgets", "httr", "IRkernel", "jsonlite",
+    "magick", "packrat", "pacman", "RCurl", "rvest", "stargazer", "styler",
+    "survival", "tibble", "tidyr", "tinytex", "XML"
+)
+
+# Check if the packages are installed, if not install
+lapply(pkg_additional,
+    function(pkg) {
+        if (system.file(package = pkg) == "")
+            install.packages(pkg,
+                repos = "http://cran.us.r-project.org")
+})
+
+# pkg_to_install is created in 00-setup.Rmd
+pkg_to_cite <- c(pkg_to_install, pkg_additional)
+
+# generate a BibTeX database automatically for some R packages
+knitr::write_bib(pkg_to_cite, 'packages.bib')
+```
